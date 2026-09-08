@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A friendly two-player Tic Tac Toe game.">
+  <title>Tic Tac Toe | Two Player Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-panel" aria-labelledby="game-title">
+      <header class="game-header">
+        <div>
+          <p class="eyebrow">Two player / 01</p>
+          <h1 id="game-title">Tic <span>·</span> Tac <span>·</span> Toe</h1>
+        </div>
+        <div class="round-mark" aria-hidden="true">3×3</div>
+      </header>
+
+      <div class="game-layout">
+        <div class="play-area">
+          <div class="mode-switch" role="group" aria-label="Game mode">
+            <span class="mode-label">Play mode</span>
+            <label class="mode-option">
+              <input type="radio" name="mode" value="local" checked>
+              <span>Two players</span>
+            </label>
+            <label class="mode-option">
+              <input type="radio" name="mode" value="bot">
+              <span>Vs bot</span>
+            </label>
+          </div>
+
+          <div class="status-row">
+            <p id="game-status" class="game-status" role="status" aria-live="polite">Player X's turn</p>
+            <p id="round-status" class="round-status">Make your move</p>
+          </div>
+
+          <div class="board" role="grid" aria-label="Tic Tac Toe board">
+            <button class="cell" type="button" role="gridcell" data-index="0" aria-label="Top left, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="1" aria-label="Top center, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="2" aria-label="Top right, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="3" aria-label="Middle left, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="4" aria-label="Center, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="5" aria-label="Middle right, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="6" aria-label="Bottom left, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="7" aria-label="Bottom center, empty"></button>
+            <button class="cell" type="button" role="gridcell" data-index="8" aria-label="Bottom right, empty"></button>
+          </div>
+
+          <button id="reset-button" class="reset-button" type="button">
+            <span aria-hidden="true">↻</span> New round
+          </button>
+        </div>
+
+        <aside class="guide" aria-label="How to play">
+          <p class="guide-label">How to play</p>
+          <p class="guide-copy">Take turns placing your mark. First to get three in a row wins. In bot mode, you play X.</p>
+          <div class="player-key">
+            <div class="player-chip player-x"><span aria-hidden="true">×</span><span>Player X</span></div>
+            <div class="player-chip player-o"><span aria-hidden="true">○</span><span>Player O</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="game-footer">
+        <span>Keep it simple.</span>
+        <span class="footer-dot" aria-hidden="true"></span>
+        <span>Play it out.</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
