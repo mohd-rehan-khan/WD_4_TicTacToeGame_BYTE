@@ -89,21 +89,43 @@ function scheduleBotMove() {
 }
 
 function getBestBotMove() {
-  let bestScore = -Infinity;
-  let bestMove = 0;
+  const availableMoves = board
+    .map((value, index) => (value ? null : index))
+    .filter((index) => index !== null);
 
-  board.forEach((value, index) => {
-    if (value) return;
-    board[index] = 'O';
-    const score = minimax(false);
-    board[index] = '';
-    if (score > bestScore) {
-      bestScore = score;
-      bestMove = index;
-    }
+  const winningMove = availableMoves.find((index) => {
+    const nextBoard = [...board];
+    nextBoard[index] = 'O';
+    return getWinningLineFromBoard(nextBoard) === 'O';
   });
 
-  return bestMove;
+  if (winningMove !== undefined) return winningMove;
+
+  const blockingMove = availableMoves.find((index) => {
+    const nextBoard = [...board];
+    nextBoard[index] = 'X';
+    return getWinningLineFromBoard(nextBoard) === 'X';
+  });
+
+  if (blockingMove !== undefined) return blockingMove;
+
+  return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+}
+
+function getWinningLineFromBoard(candidateBoard) {
+  const lines = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+
+  const winningLine = lines.find(([first, second, third]) => (
+    candidateBoard[first] &&
+    candidateBoard[first] === candidateBoard[second] &&
+    candidateBoard[first] === candidateBoard[third]
+  ));
+
+  return winningLine ? candidateBoard[winningLine[0]] : null;
 }
 
 function minimax(isMaximizing) {
