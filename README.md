@@ -12,6 +12,10 @@ A simple browser-based Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ## Play the game
 
+[Open the Tic Tac Toe game online](https://wd-4-tic-tac-toe-game-byte.vercel.app/)
+
+or
+
 Open `index.html` in your browser to start playing.
 
 You can also serve the project locally with a simple static server if you prefer:
